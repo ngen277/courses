@@ -1,0 +1,69 @@
+<div>
+    <h2 id="page-heading">
+        <span>Courses</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-courses" [routerLink]="['/courses/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Courses
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="courses?.length === 0">
+        <span>No courses found</span>
+    </div>
+    <div class="table-responsive" *ngIf="courses?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Name</span></th>
+            <th scope="col" ><span>Annotation</span></th>
+            <th scope="col" ><span>Full Description</span></th>
+            <th scope="col" ><span>Picture Link</span></th>
+            <th scope="col" ><span>Period</span></th>
+            <th scope="col" ><span>Teachers</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let courses of courses ;trackBy: trackId">
+                <td><a [routerLink]="['/courses', courses.id, 'view' ]">{{courses.id}}</a></td>
+                <td>{{courses.name}}</td>
+                <td>{{courses.annotation}}</td>
+                <td>{{courses.fullDescription}}</td>
+                <td>{{courses.pictureLink}}</td>
+                <td>{{courses.period}}</td>
+                <td>
+                    <div *ngIf="courses.teachers">
+                        <a [routerLink]="['/teachers', courses.teachers?.id, 'view' ]" >{{courses.teachers?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/courses', courses.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/courses', courses.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(courses)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

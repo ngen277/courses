@@ -1,0 +1,88 @@
+entity Students{
+	login String,
+    password String,
+    surname String,
+    name String,
+    middlename String,
+    ngroup String,
+    registrationDate LocalDate,
+    sex String,
+    email String,
+    isAdmin Boolean
+}
+
+entity Courses {
+	name String,
+	annotation String,
+	fullDescription String,
+    pictureLink String,
+    period Float
+}
+
+entity CourseParts {
+	npart Integer,
+    downloadLink String,
+    downloadDescription String,
+    testName String,
+    testQuestionCount Integer
+}
+
+entity Questions {
+	content String
+}
+
+entity Answers {
+	answerContent String,
+    rightAnswer Boolean
+}
+
+entity StudentsCourses {
+	status String,
+    registrationDate LocalDate,
+    endDate LocalDate
+}
+
+entity StudentsTests {
+	attemps Integer,
+    percent Integer,
+    lastTestDate LocalDate
+}
+
+entity Teachers {
+	name String,
+    degree String,
+    email String,
+    photo String,
+    about String
+}
+
+entity CorrectCodes {
+	
+}
+
+entity News {
+	title String,
+    date LocalDate,
+    body String,
+    author String
+}
+
+relationship OneToOne {
+	Students{studentCode} to CorrectCodes
+}
+
+relationship OneToMany {
+	Students{userCourses} to StudentsCourses,
+    Questions{answers} to Answers,
+    CourseParts{questions} to Questions,
+    Courses{userCourses} to StudentsCourses,
+    Teachers{courses} to Courses,
+    Courses{courseParts} to CourseParts,
+    StudentsCourses{userTests} to StudentsTests
+}
+
+relationship ManyToMany {
+	CourseParts{userTests} to StudentsTests{courseParts}
+}
+
+

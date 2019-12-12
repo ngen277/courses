@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-students-tests-heading">Create or edit a Students Tests</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_attemps">Attemps</label>
+                    <input type="number" class="form-control" name="attemps" id="field_attemps"
+                           formControlName="attemps"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_percent">Percent</label>
+                    <input type="number" class="form-control" name="percent" id="field_percent"
+                           formControlName="percent"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastTestDate">Last Test Date</label>
+                    <div class="input-group">
+                        <input id="field_lastTestDate" type="text" class="form-control" name="lastTestDate" ngbDatepicker  #lastTestDateDp="ngbDatepicker" formControlName="lastTestDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="lastTestDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_studentsCourses">Students Courses</label>
+                    <select class="form-control" id="field_studentsCourses" name="studentsCourses" formControlName="studentsCourses">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="studentsCoursesOption.id === editForm.get('studentsCourses').value?.id ? editForm.get('studentsCourses').value : studentsCoursesOption" *ngFor="let studentsCoursesOption of studentscourses; trackBy: trackStudentsCoursesById">{{studentsCoursesOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

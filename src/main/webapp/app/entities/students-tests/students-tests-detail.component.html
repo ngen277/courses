@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="studentsTests">
+            <h2><span>Students Tests</span> {{studentsTests.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Attemps</span></dt>
+                <dd>
+                    <span>{{studentsTests.attemps}}</span>
+                </dd>
+                <dt><span>Percent</span></dt>
+                <dd>
+                    <span>{{studentsTests.percent}}</span>
+                </dd>
+                <dt><span>Last Test Date</span></dt>
+                <dd>
+                    <span>{{studentsTests.lastTestDate}}</span>
+                </dd>
+                <dt><span>Students Courses</span></dt>
+                <dd>
+                    <div *ngIf="studentsTests.studentsCourses">
+                        <a [routerLink]="['/students-courses', studentsTests.studentsCourses?.id, 'view']">{{studentsTests.studentsCourses?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/students-tests', studentsTests.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

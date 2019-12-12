@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span>Students</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-students" [routerLink]="['/students/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Students
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="students?.length === 0">
+        <span>No students found</span>
+    </div>
+    <div class="table-responsive" *ngIf="students?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Login</span></th>
+            <th scope="col" ><span>Password</span></th>
+            <th scope="col" ><span>Surname</span></th>
+            <th scope="col" ><span>Name</span></th>
+            <th scope="col" ><span>Middlename</span></th>
+            <th scope="col" ><span>Ngroup</span></th>
+            <th scope="col" ><span>Registration Date</span></th>
+            <th scope="col" ><span>Sex</span></th>
+            <th scope="col" ><span>Email</span></th>
+            <th scope="col" ><span>Is Admin</span></th>
+            <th scope="col" ><span>Student Code</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let students of students ;trackBy: trackId">
+                <td><a [routerLink]="['/students', students.id, 'view' ]">{{students.id}}</a></td>
+                <td>{{students.login}}</td>
+                <td>{{students.password}}</td>
+                <td>{{students.surname}}</td>
+                <td>{{students.name}}</td>
+                <td>{{students.middlename}}</td>
+                <td>{{students.ngroup}}</td>
+                <td>{{students.registrationDate | date:'mediumDate'}}</td>
+                <td>{{students.sex}}</td>
+                <td>{{students.email}}</td>
+                <td>{{students.isAdmin}}</td>
+                <td>
+                    <div *ngIf="students.studentCode">
+                        <a [routerLink]="['/correct-codes', students.studentCode?.id, 'view' ]" >{{students.studentCode?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/students', students.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/students', students.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(students)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
