@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-answers-heading">Create or edit a Answers</h2>
+            <h2 id="jhi-answers-heading">Изменить ответ</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!editForm.get('id').value">
@@ -10,18 +10,18 @@
                         readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_answerContent">Answer Content</label>
+                    <label class="form-control-label" for="field_answerContent">Ответ</label>
                     <input type="text" class="form-control" name="answerContent" id="field_answerContent"
                            formControlName="answerContent"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_rightAnswer">Right Answer</label>
+                    <label class="form-control-label" for="field_rightAnswer">Правильный ответ</label>
                     <input type="checkbox" class="form-control" name="rightAnswer" id="field_rightAnswer"
                            formControlName="rightAnswer"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" for="field_questions">Questions</label>
+                    <label class="form-control-label" for="field_questions">Вопрос</label>
                     <select class="form-control" id="field_questions" name="questions" formControlName="questions">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="questionsOption.id === editForm.get('questions').value?.id ? editForm.get('questions').value : questionsOption" *ngFor="let questionsOption of questions; trackBy: trackQuestionsById">{{questionsOption.id}}</option>
@@ -30,10 +30,10 @@
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
-                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Отмена</span>
                 </button>
                 <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Сохранить</span>
                 </button>
             </div>
         </form>

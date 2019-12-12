@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
-        <span>Answers</span>
+        <span>Ответы</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-answers" [routerLink]="['/answers/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Create a new Answers
+                Создать новый ответ
             </span>
         </button>
     </h2>
@@ -19,9 +19,9 @@
             <thead>
             <tr>
             <th scope="col" ><span>ID</span></th>
-            <th scope="col" ><span>Answer Content</span></th>
-            <th scope="col" ><span>Right Answer</span></th>
-            <th scope="col" ><span>Questions</span></th>
+            <th scope="col" ><span>Содержимое ответа</span></th>
+            <th scope="col" ><span>Правильный ответ</span></th>
+            <th scope="col" ><span>Вопрос</span></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -41,18 +41,18 @@
                                 [routerLink]="['/answers', answers.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline">View</span>
+                            <span class="d-none d-md-inline">Просмотреть</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/answers', answers.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline">Edit</span>
+                            <span class="d-none d-md-inline">Изменить</span>
                         </button>
                         <button type="submit" (click)="delete(answers)"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline">Delete</span>
+                            <span class="d-none d-md-inline">Удалить</span>
                         </button>
                     </div>
                 </td>

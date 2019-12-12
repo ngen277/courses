@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
-        <span>Correct Codes</span>
+        <span>Коды студентов</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-correct-codes" [routerLink]="['/correct-codes/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Create a new Correct Codes
+            Создать новый код студента
             </span>
         </button>
     </h2>
@@ -31,18 +31,18 @@
                                 [routerLink]="['/correct-codes', correctCodes.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline">View</span>
+                            <span class="d-none d-md-inline">Просмотреть</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/correct-codes', correctCodes.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline">Edit</span>
+                            <span class="d-none d-md-inline">Изменить</span>
                         </button>
                         <button type="submit" (click)="delete(correctCodes)"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline">Delete</span>
+                            <span class="d-none d-md-inline">Удалить</span>
                         </button>
                     </div>
                 </td>

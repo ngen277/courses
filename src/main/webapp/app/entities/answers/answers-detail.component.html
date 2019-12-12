@@ -1,19 +1,19 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="answers">
-            <h2><span>Answers</span> {{answers.id}}</h2>
+            <h2><span>Ответ</span> {{answers.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span>Answer Content</span></dt>
+                <dt><span>Ответ</span></dt>
                 <dd>
                     <span>{{answers.answerContent}}</span>
                 </dd>
-                <dt><span>Right Answer</span></dt>
+                <dt><span>Правильный ответ</span></dt>
                 <dd>
                     <span>{{answers.rightAnswer}}</span>
                 </dd>
-                <dt><span>Questions</span></dt>
+                <dt><span>Вопросы</span></dt>
                 <dd>
                     <div *ngIf="answers.questions">
                         <a [routerLink]="['/questions', answers.questions?.id, 'view']">{{answers.questions?.id}}</a>
@@ -24,13 +24,13 @@
             <button type="submit"
                     (click)="previousState()"
                     class="btn btn-info">
-                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Назад</span>
             </button>
 
             <button type="button"
                     [routerLink]="['/answers', answers.id, 'edit']"
                     class="btn btn-primary">
-                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Изменить</span>
             </button>
         </div>
     </div>
